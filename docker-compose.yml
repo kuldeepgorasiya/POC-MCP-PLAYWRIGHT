@@ -1,0 +1,14 @@
+services:
+  mcp:
+    build: .
+    container_name: mcp-vnc-server
+    ports:
+      - "5900:5900"     # VNC access
+      - "6080:6080"     # noVNC web access
+      - "5000:5000"     # MCP API (Flask)
+    restart: always
+    environment:
+      - DISPLAY=:99
+      - RESOLUTION=1280x720
+    volumes:
+      - .:/app
